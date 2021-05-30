@@ -1,2 +1,3 @@
-# template
-Code that I often use
+# Template
+
+Code that I often use.
