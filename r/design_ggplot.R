@@ -9,7 +9,8 @@ theme_visual <- theme_classic() +
     panel.grid.major = element_blank(),
     panel.grid.minor = element_blank(),
     strip.background = element_blank()
-  )
+  ) +
+  theme(legend.position = "top")
 
 # Theme for the bar plots
 theme_bc <- theme(
