@@ -9,3 +9,9 @@ sudo apt-get install libxml2-dev
 
 # GIT
 sudo apt install git
+
+# VIRTUAL BOX
+
+    # Shared folder access
+sudo apt-get install virtualbox-guest-utils
+sudo adduser $USER vboxsf
