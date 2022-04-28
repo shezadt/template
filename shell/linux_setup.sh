@@ -19,7 +19,13 @@ sudo apt-get install libxml2-dev
 conda create -n ds_env python=3.9 numpy pandas scikit-learn jupyter seaborn
 
 # GIT
+
+    # Install
 sudo apt install git
+
+    # Config
+git config --global user.name "shezadt"
+git config --global user.email "shezad.t*@gmail.com"
 
 # VIRTUAL BOX
 
