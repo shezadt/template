@@ -35,3 +35,6 @@ sudo adduser $USER vboxsf
 
 # FONTS
 sudo apt install fonts-firacode
+
+# SYSTEM
+sudo apt install htop
