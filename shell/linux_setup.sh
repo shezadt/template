@@ -2,13 +2,14 @@
 
 # R
 
-    # Install R on Ubuntu 20.04
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
-sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/'
+    # Install R on Ubuntu 22.04
+wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo gpg --dearmor -o /usr/share/keyrings/r-project.gpg
+echo "deb [signed-by=/usr/share/keyrings/r-project.gpg] https://cloud.r-project.org/bin/linux/ubuntu jammy-cran40/" | sudo tee -a /etc/apt/sources.list.d/r-project.list
 sudo apt update
-sudo apt install r-base
+sudo apt install --no-install-recommends r-base
 
     # Install dependencies required to install R packages such as tidyverse
+sudo apt-get install build-essential
 sudo apt-get install libssl-dev
 sudo apt-get install libcurl4-openssl-dev
 sudo apt-get install libxml2-dev
