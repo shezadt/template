@@ -1,5 +1,6 @@
 # load the libraries
 import pyspark.sql.functions as f
+from pyspark.sql.window import Window
 
 # CONNECTION / READING
 
@@ -35,3 +36,14 @@ s_df.createOrReplaceTempView("view_name")
 
 # transform a column into a list
 list_ids = s_df.select("id").rdd.flatMap(lambda x: x).collect()
+
+# get the latest record for each group
+windowOrder = Window \
+    .partitionBy("grp_var1", "grp_var2") \
+    .orderBy(f.col("datetime_col").desc())
+
+s_df = (
+    s_df
+    .withColumn("row", f.row_number().over(windowOrder)) 
+    .filter(f.col("row") == 1).drop("row")
+)
