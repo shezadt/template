@@ -47,3 +47,9 @@ s_df = (
     .withColumn("row", f.row_number().over(windowOrder)) 
     .filter(f.col("row") == 1).drop("row")
 )
+
+# ANALYSE
+
+# get the min or max of a column
+min_value = s_df.select(f.min(f.col("column_name"))).collect()[0][0]
+min_value = s_df.select(f.max(f.col("column_name"))).collect()[0][0]
