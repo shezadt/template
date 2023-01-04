@@ -32,6 +32,11 @@ results = sqlContext.sql('''SELECT * FROM xxx''')
 # create a view from a spark df
 s_df.createOrReplaceTempView("view_name")
 
+# create a view in the hive metastore
+%sql
+DROP TABLE IF EXISTS db_name.table_name;
+CREATE TABLE db_name.table_name USING DELTA LOCATION 'delta_table_path'
+
 # PROCESSING
 
 # transform a column into a list
