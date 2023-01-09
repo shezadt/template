@@ -42,6 +42,12 @@ CREATE TABLE db_name.table_name USING DELTA LOCATION 'delta_table_path'
 # transform a column into a list
 list_ids = s_df.select("id").rdd.flatMap(lambda x: x).collect()
 
+# create a new column based on condition
+s_df = s_df.withColumn(
+    "new_column",
+    f.when(f.col("colA") == "Cond1", f.col("colB")).otherwise(f.col("colC"))
+)
+
 # get the latest record for each group
 windowOrder = Window \
     .partitionBy("grp_var1", "grp_var2") \
