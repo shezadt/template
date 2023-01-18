@@ -3,6 +3,18 @@ import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta, date
 
+# GENERAL
+
+# check if a variable exists
+try:
+    var_to_check
+except NameError:
+    var_exists = False
+else:
+    var_exists = True
+
+# DATA ANALYSIS
+
 # initialize a dataframe
 df = pd.DataFrame({'num_legs': [2, 4, 4, 6, np.NaN],
                    'num_wings': [2, 0, 0, 0, 7]})
