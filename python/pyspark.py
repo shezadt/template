@@ -1,6 +1,7 @@
 # load the libraries
 import pyspark.sql.functions as f
 from pyspark.sql.window import Window
+from pyspark.sql.types import TimestampType, StringType
 
 # CONNECTION / READING
 
@@ -58,6 +59,9 @@ s_df = (
     .withColumn("row", f.row_number().over(windowOrder)) 
     .filter(f.col("row") == 1).drop("row")
 )
+
+# use a predefined list as input of an udf function
+my_function_udf = f.udf(lambda x: my_function(x, predefined_list), TimestampType())
 
 # ANALYSE
 
