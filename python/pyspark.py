@@ -63,6 +63,11 @@ s_df = (
 # use a predefined list as input of an udf function
 my_function_udf = f.udf(lambda x: my_function(x, predefined_list), TimestampType())
 
+# remove a pattern from a string column
+s_df = (
+    s_df.withColumn(f.col("string_col"), f.f.regexp_replace(f.col("string_col"), "pattern_to_remove", "replacement"))
+)
+
 # ANALYSE
 
 # get the min or max of a column
