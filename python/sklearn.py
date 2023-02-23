@@ -38,58 +38,13 @@ features_all = features_numeric + features_categorical
 X_train, X_test, y_train, y_test = train_test_split(
     iris[features_all], iris['target'], test_size=0.2, random_state=42)
 
-# 2 - CREATE CUSTOM TRANSFORMERS
-
-# template
-class TemplateTransformer(BaseEstimator, TransformerMixin):
-
-    """
-    Template transformer class
-    """
-
-    def __init__(self):
-        return None
-
-    def fit(self, X=None, y=None):
-        return self
-
-    def transform(self, X=None):
-        return self
-
-# custom transformer to select required features
-class select_features(BaseEstimator, TransformerMixin):
-
-    """
-    Transformer to select required features.
-
-    Parameters
-    ----------
-    features_to_select : list[str], default=None
-        The list of features to keep.
-    """
-
-    def __init__(self, features_to_select=None):
-
-        self.features_to_select = features_to_select
-
-    def fit(self, X, y=None):
-        return self
-
-    def transform(self, X):
-
-        # make a copy of the df
-        X_output = X.copy()
-
-        # keep the features required
-        X_output = X_output.loc[:, self.features_to_select]
-
-        return X_output
-
-# 3 - CREATE THE PIPELINE
+# 2 - CREATE THE PIPELINE
 
     # transformer to apply on the whole dataset
 all_transformer = Pipeline(steps=[
-    ('select_features', select_features(features_to_select=features_all))
+    ("selector", ColumnTransformer([
+        ("selector", "passthrough", features_all)
+    ], remainder="drop"))
 ])
 
 # transformer to apply on numeric features
@@ -115,7 +70,7 @@ preprocessor = ColumnTransformer(
 pipe = Pipeline(steps=[('preprocessor', preprocessor),
                        ('classifier', LogisticRegression())])
 
-# 4 - TRAIN THE BEST MODEL
+# 3 - TRAIN THE BEST MODEL
 
 # define the grid with the hyperparameters
 param_grid = dict(classifier__C=[0.01, 0.1, 1],
@@ -132,5 +87,5 @@ best_model.fit(X_train, y_train)
 # print the score
 best_model.best_score_
 
-# 5 - SCORE ON THE TEST SET
+# 4 - SCORE ON THE TEST SET
 best_model.score(X_test, y_test)
