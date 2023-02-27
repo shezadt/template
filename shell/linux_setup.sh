@@ -41,3 +41,8 @@ sudo apt install fonts-firacode
 
 # SYSTEM
 sudo apt install htop
+
+# SPOTIFY
+
+    # Exit full screen mode
+sed -i "/\b\(app.window.position\)\b/d" -- $HOME/snap/spotify/current/.config/spotify/prefs
