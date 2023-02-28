@@ -3,6 +3,11 @@ import pyspark.sql.functions as f
 from pyspark.sql.window import Window
 from pyspark.sql.types import TimestampType, StringType
 
+# SYSTEM
+
+# get the notebook directory path
+directory_path = dbutils.notebook.entry_point.getDbutils().notebook().getContext().notebookPath().get()
+
 # CONNECTION / READING
 
 # connect to postgre sql server
