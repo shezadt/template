@@ -40,8 +40,10 @@ s_df.createOrReplaceTempView("view_name")
 
 # create a view in the hive metastore
 %sql
+CREATE DATABASE IF NOT EXISTS db_name;
 DROP TABLE IF EXISTS db_name.table_name;
 CREATE TABLE db_name.table_name USING DELTA LOCATION 'delta_table_path'
+CREATE TABLE IF NOT EXISTS db_name.table_name USING DELTA LOCATION 'delta_table_path'
 
 # PROCESSING
 
