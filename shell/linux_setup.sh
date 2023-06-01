@@ -15,6 +15,9 @@ sudo apt-get install libcurl4-openssl-dev
 sudo apt-get install libxml2-dev
 sudo apt-get install libfontconfig1-dev
 sudo apt-get install libcairo2-dev
+sudo apt install libharfbuzz-dev
+sudo apt install libfribidi-dev
+sudo apt install libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev
 
 # PYTHON
 
