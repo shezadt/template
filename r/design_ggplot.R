@@ -25,3 +25,5 @@ theme_bc <- theme(
 
 # Custom E. color
 C_E_BLUE <- "#31659f"
+C_F_PURPLE <- "#4D148C"
+C_F_ORANGE <- "#FF6600"
