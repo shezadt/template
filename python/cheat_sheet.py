@@ -33,3 +33,8 @@ start_date = today_date - timedelta(days=3)
 
 # replace the day by another day, e.g. 1
 date_replaced = today_date.replace(day=1)
+
+# write a .json file, assuming data is a dictionnary
+data_json = json.dumps(data)
+with open('outputh_json_file_path.json', 'w') as outfile:
+    outfile.write(data_json)
