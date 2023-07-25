@@ -2,7 +2,7 @@
 import polars as pl
 
 # add prefix to column names
-df_new = df.select(pl.col(c).alias("prefix_" + c) for c in df.columns])
+df_new = df.select([pl.col(c).alias("prefix_" + c) for c in df.columns])
 
 # function to get percentage of values of a column
 def get_value_percentage(df, col_name, digits=2):
